@@ -12,21 +12,22 @@ def create_product(name, name_brand, product_categorization, image):
 
     return product
 
-def create_ingredients(ingredients):
+def create_ingredients(product, ingredients):
     """Create a return the ingredients."""
 
-    ingredients = Ingredients(ingredients=ingredients)
+    ingredients = Ingredients(product=product, ingredients=ingredients)
 
     db.session.add(ingredients)
     db.session.commit()
 
     return ingredients
 
-def create_review(user, movie, score):
+def create_review(product):
     """"Create and return reviews"""
 
-    review = Review(user= user, movie=movie, score=score)
-    db.session.add(rating)
+    review = Review(uproduct=product)
+    
+    db.session.add(review)
     db.session.commit()
 
     return review
