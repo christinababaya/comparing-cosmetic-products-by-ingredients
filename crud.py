@@ -12,6 +12,11 @@ def create_product(name, name_brand, product_categorization, image):
 
     return product
 
+def get_products():
+    """Returns all products in database"""
+
+    return Product.query.all()
+
 def create_ingredients(ingredients):
     """Create a return the ingredients."""
 
@@ -22,6 +27,27 @@ def create_ingredients(ingredients):
 
     return ingredients
 
+def get_ingredients():
+    """Returns all ingredients in database"""
+
+    return Ingredients.query.all()
+
+def create_product_ingredients(product, ingredients):
+    """Creates relationship between a product and its ingredients"""
+
+    product_ingredients = Product_ingredients(product=product, ingredients=ingredients)
+
+    db.session.add(product_ingredients)
+    db.session.commit()
+
+    return product_ingredients
+
+def get_product_ingredients():
+    """Returns all product ingredient relationships"""
+
+    return Product_ingredients.query.all()
+
+
 def create_review(product):
     """"Create and return reviews"""
 
@@ -31,6 +57,12 @@ def create_review(product):
     db.session.commit()
 
     return review
+
+def get_review():
+    """Returns all reviews in database"""
+
+    return Review.query.all()
+
 
 if __name__ == '__main__':
     from server import app

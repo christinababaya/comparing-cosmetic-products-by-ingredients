@@ -22,6 +22,9 @@ class Product(dm.Model):
     product_categorization = db.Column(db.String)
     image = db.Column(db.String)
 
+    def __repr__(self):
+        return f'<Product product_id={self.product_id} name={self.name} name_brand={self.name_brand} product_categorization={self.product_categorization} image={self.image}>'
+
 
 class Ingredients(db.Model):
     """Chemicals.. What the ingredients do."""
@@ -33,6 +36,9 @@ class Ingredients(db.Model):
                         primary_key=True,
                         nullable=True)
     ingredients = db.Column(db.String)
+
+      def __repr__(self):
+        return f'<Ingredients ingredient_id={self.ingredient_id} ingredients={self.ingredients}>'
 
 
 class Product_ingredients(db.Model):
@@ -51,6 +57,9 @@ class Product_ingredients(db.Model):
     product = db.relationship('Product', backref='product_ingredients')
     ingredients = db.relationship('Ingredients', backref='product_ingredients')
 
+     def __repr__(self):
+        return f'<Product_Ingredients product_ingredients_id={self.product_ingredients_id} product_id={self.product_id} ingredients_id={self.ingredients_id}>'
+
 class Review(db.Model):
     """Customer Reviews"""
 
@@ -64,6 +73,9 @@ class Review(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey,('products.product_id'))
 
     product = db.relationship('Product', backref='review')
+
+     def __repr__(self):
+        return f'<Review review_id={self.review_id} product_id={self.product_id}>'
 
 def connect_to_db(flask_app, db_uri='postgresql:///ratings', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
