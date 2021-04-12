@@ -17,10 +17,10 @@ class Product(dm.Model):
                         autoincrement=True,
                         primary_key=True,
                         nullable=False)
-    name = db.Column(db.String, unique=True)
-    name_brand = db.Column(db.String, unique=True)
+    name = db.Column(db.String)
+    name_brand = db.Column(db.String)
     product_categorization = db.Column(db.String)
-    image = db.Column(db.url)
+    image = db.Column(db.String)
 
 
 class Ingredients(db.Model):
@@ -32,7 +32,6 @@ class Ingredients(db.Model):
                         autoincrement=True,
                         primary_key=True,
                         nullable=True)
-    product_id = db.Column(models.ForeignKey)
     ingredients = db.Column(db.String)
 
 
@@ -46,7 +45,8 @@ class Product_ingredients(db.Model):
                             autoincrement=True,
                             primary_key=True,
                             nullable=True)
-    ingredients_id = db.Column(models.ForeignKey)
+    product_id = db.Column(db.ForeignKey)
+    ingredients_id = db.Column(db.ForeignKey)
 
 class Review(db.Model):
     """Customer Reviews"""
