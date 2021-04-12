@@ -48,6 +48,9 @@ class Product_ingredients(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey, ('products.product_id'))
     ingredients_id = db.Column(db.Integer, db.ForeignKey, ('products.ingredients_id'))
 
+    product = db.relationship('Product', backref='product_ingredients')
+    ingredients = db.relationship('Ingredients', backref='product_ingredients')
+
 class Review(db.Model):
     """Customer Reviews"""
 
@@ -59,6 +62,8 @@ class Review(db.Model):
                             primary_key=True,
                             nullable=True)
     product_id = db.Column(db.Integer, db.ForeignKey,('products.product_id'))
+
+    product = db.relationship('Product', backref='review')
 
 def connect_to_db(flask_app, db_uri='postgresql:///ratings', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
