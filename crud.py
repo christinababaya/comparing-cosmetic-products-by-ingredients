@@ -12,10 +12,10 @@ def create_product(name, name_brand, product_categorization, image):
 
     return product
 
-def create_ingredients(product, ingredients):
+def create_ingredients(ingredients):
     """Create a return the ingredients."""
 
-    ingredients = Ingredients(product=product, ingredients=ingredients)
+    ingredients = Ingredients(ingredients=ingredients)
 
     db.session.add(ingredients)
     db.session.commit()
