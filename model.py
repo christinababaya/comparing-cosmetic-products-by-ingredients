@@ -58,7 +58,7 @@ class Review(db.Model):
                             autoincrement=True,
                             primary_key=True,
                             nullable=True)
-    product_id = db.Column(models.ForeignKey)
+    product_id = db.Column(db.Integer, db.ForeignKey,('products.product_id'))
 
 def connect_to_db(flask_app, db_uri='postgresql:///ratings', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
