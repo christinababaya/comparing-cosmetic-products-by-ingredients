@@ -45,8 +45,8 @@ class Product_ingredients(db.Model):
                             autoincrement=True,
                             primary_key=True,
                             nullable=True)
-    product_id = db.Column(db.ForeignKey)
-    ingredients_id = db.Column(db.ForeignKey)
+    product_id = db.Column(db.Integer, db.ForeignKey, ('products.product_id'))
+    ingredients_id = db.Column(db.Integer, db.ForeignKey, ('products.ingredients_id'))
 
 class Review(db.Model):
     """Customer Reviews"""
