@@ -18,12 +18,12 @@ class Product(dm.Model):
                         primary_key=True,
                         nullable=False)
     name = db.Column(db.String)
-    name_brand = db.Column(db.String)
+    brand = db.Column(db.String)
     product_categorization = db.Column(db.String)
     image = db.Column(db.String)
 
     def __repr__(self):
-        return f'<Product product_id={self.product_id} name={self.name} name_brand={self.name_brand} product_categorization={self.product_categorization} image={self.image}>'
+        return f'<Product product_id={self.product_id} name={self.name} brand={self.brand} product_categorization={self.product_categorization} image={self.image}>'
 
 
 class Ingredients(db.Model):
