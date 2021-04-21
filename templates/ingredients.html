@@ -5,19 +5,11 @@
   {% for ingredient in ingredients %}
   <p>
     <form>
-      <li><b>{{ ingredient['product']['label'] }}:</b> {{ ingredient['food']['nutrients']['ENERC_KCAL'] }} calories</li>
-      <input type="radio" name="name"/>
-      <input type="hidden" name="calories"/>
+      <li><b>{{ ingredient['product']['label'] }}:</b></li>
       <input type="submit" value="Select Ingredient"/>
     </form>
   </p>
 
   {% endfor %}
-  <p>
-  this should be inside a form with checkboxes next to each ingredients, and it is a post request to /recipe/{{ recipe_id }}/add-ingredient
-  pass in the recipe id
-  </p>
-  </br>
-
-
+  
   {% endblock %}
