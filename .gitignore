@@ -1,2 +1,4 @@
 env
 https://skincare-api.herokuapp.com
+.DS_Store
+__pycache__/
