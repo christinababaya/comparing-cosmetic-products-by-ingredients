@@ -7,8 +7,7 @@ db = SQLAlchemy()
 
 
 
-# Replace this with your code!
-class Product(dm.Model):
+class Product(db.Model):
     """Products."""
 
     __tablename__ = 'products'
@@ -26,7 +25,7 @@ class Product(dm.Model):
         return f'<Product product_id={self.product_id} name={self.name} brand={self.brand} product_categorization={self.product_categorization} image={self.image}>'
 
 
-class Ingredients(db.Model):
+class Ingredient(db.Model):
     """Chemicals.. What the ingredients do."""
 
     __tablename__ = 'ingredients'
@@ -34,50 +33,50 @@ class Ingredients(db.Model):
     ingredient_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True,
-                        nullable=True)
-    ingredients = db.Column(db.String)
+                        nullable=False)
+    ingredient_name = db.Column(db.String)
 
-      def __repr__(self):
-        return f'<Ingredients ingredient_id={self.ingredient_id} ingredients={self.ingredients}>'
+    def __repr__(self):
+        return f'<Ingredient ingredient_id={self.ingredient_id} name={self.ingredient_name}>'
 
 
-class Product_ingredients(db.Model):
+class Product_Ingredient(db.Model):
     """Product ingredients"""
 
     __tablename__ = 'product_ingredients'
     
-    
-    product_ingredients_id = db.Column(db.Integer,
+    product_ingredient_id = db.Column(db.Integer,
                             autoincrement=True,
                             primary_key=True,
-                            nullable=True)
-    product_id = db.Column(db.Integer, db.ForeignKey, ('products.product_id'))
-    ingredients_id = db.Column(db.Integer, db.ForeignKey, ('products.ingredients_id'))
+                            nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('products.product_id'))
+    ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.ingredient_id'))
 
     product = db.relationship('Product', backref='product_ingredients')
-    ingredients = db.relationship('Ingredients', backref='product_ingredients')
+    ingredient = db.relationship('Ingredient', backref='product_ingredients')
 
-     def __repr__(self):
-        return f'<Product_Ingredients product_ingredients_id={self.product_ingredients_id} product_id={self.product_id} ingredients_id={self.ingredients_id}>'
+    def __repr__(self):
+        return f'<Product_Ingredient product_ingredient_id={self.product_ingredient_id} product_id={self.product_id} ingredient_id={self.ingredient_id}>'
+
 
 class Review(db.Model):
     """Customer Reviews"""
 
-    ___tablename___ = 'review'
-
+    ___tablename___ = 'reviews'
 
     review_id = db.Column(db.Integer,
                             autoincrement=True,
                             primary_key=True,
                             nullable=True)
-    product_id = db.Column(db.Integer, db.ForeignKey,('products.product_id'))
+    product_id = db.Column(db.Integer, db.ForeignKey('products.product_id'))
 
-    product = db.relationship('Product', backref='review')
+    product = db.relationship('Product', backref='reviews')
 
-     def __repr__(self):
+    def __repr__(self):
         return f'<Review review_id={self.review_id} product_id={self.product_id}>'
 
-def connect_to_db(flask_app, db_uri='postgresql:///ratings', echo=True):
+
+def connect_to_db(flask_app, db_uri='postgresql:///cosmetics', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -95,4 +94,4 @@ if __name__ == '__main__':
     # too annoying; this will tell SQLAlchemy not to print out every
     # query it executes.
 
-    connect_to_db(app)
+    connect_to_db(app, echo=False)
