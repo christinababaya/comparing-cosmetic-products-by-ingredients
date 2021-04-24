@@ -26,6 +26,11 @@ def get_product_by_name(name):
     
     return Product.query.filter_by(name=name).first()
 
+def get_product_id(product_id):
+    """Queries db for product by id."""
+
+    return Product.query.get(product_id)
+
 
 def create_ingredient(ingredient_name):
     """Create, add to db, and return an ingredient."""
@@ -49,6 +54,10 @@ def get_ingredient_by_name(ingredient_name):
     If no ingredient exists, returns None."""
     
     return Ingredient.query.filter_by(ingredient_name=ingredient_name).first()
+
+def get_ingredient_by_id(ingredient_id):
+    """Queries db for ingrediente by id."""
+    return Ingredient.query.get(ingredient_id)
 
 
 def create_product_ingredient(product, ingredient):

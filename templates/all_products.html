@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}All Movies{% endblock %}
+{% block title %}All Products{% endblock %}
 
 {% block body %}
   <h1>All Movies</h1>
 
   <ul>
-    {% for movie in movies %}
+    {% for product in products %}
       <li>
-        <a href="/movies/{{ movie.movie_id }}">
-          {{ movie.title }}
+        <a href="/products/{{ products.product_id }}">
+          {{ products }}
         </a>
       </li>
     {% endfor %}

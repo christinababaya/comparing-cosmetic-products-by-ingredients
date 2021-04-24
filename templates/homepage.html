@@ -6,8 +6,15 @@
 
   <h2>Navigation</h2>
   <ul>
-    <li><a href="/products">View all movies</a></li>
-    <li><a href="/ingredients">View all users</a></li>
+    <li><a href="/products">View all products</a></li>
+    <li><a href="/ingredients">View all ingredients</a></li>
   </ul>
 
+  <h2>Functional Search Box</h2>
+  <form action="/products" action="/ingredients" method="POST">
+    <p>
+        <input type ="text" name ="search" placeholder="Search..">
+                <input type ="submit" value ="Search">
+    </p>
+  </form>
 {% endblock %}

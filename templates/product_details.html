@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ products }} - Details{% endblock %}
+
+{% block body %}
+<h1>{{ products }}</h1>
+
+<p>
+  {{ products }}
+</p>
+
+<img src="{{ product.poster_path }}">
+{% endblock %}
