@@ -2,48 +2,95 @@
 {% block title %}Xtina Metics{% endblock %}
 
 {% block body %}
-  <h1>Welcome!</h1>
-
-  <h2>Navigation</h2>
-  <ul>
-    <li><a href="/products">View all products</a></li>
-    <li><a href="/ingredients">View all ingredients</a></li>
-  </ul>
-
-  <h2>Functional Search Box</h2>
-  <form action="/products" action="/ingredients" method="POST">
-    <p>
-        <input type ="text" name ="search" placeholder="Search..">
-                <input type ="submit" value ="Search">
-    </p>
-  </form>
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+    <h1>XTINA METICS</h1>
     <head>
         <title> Responsive category bar </title>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
         <link rel ="stylesheet" href ="style.css">
+        <style>
+            *{
+                box-sizing:border-box;
+            }
+            .topnav{
+                background:linear-gradient(#b3a37e, rgb(139, 125, 96));
+                overflow:hidden;
+                
+            }
+            .topnav a{
+                float:left;
+                width:200px;
+                display:block;
+                text-align:center;
+                color:#fff;
+                padding:25px 20px;
+                text-decoration: black;
+                font-size:14px;
+                text-transform:uppercase;
+                font-weight:bold;
+                border-right:1px solid rgb(71, 68, 19);
+            }
+            .topnav a:hover{
+                background:linear-gradient(#685a36, #675400);
+                border-radius:5px;
+            }
+        </style>
     </head>
     <body>
-        <nav class ="menu">
-            <a class ="toggle-nav" href ="#">&#9776;</a>
-            <ul>
-                <li><a href ="#"> Home</a></li>
-                <li><a href ="#"> Gallery</a></li>
-                <li><a href ="#"> Event</a></li>
-                <li><a href ="#"> Feedback</a></li>
-                <li><a href ="#"> Contact</a></li>
-            </u>
-            <div class ="social">
-                <ul>
-                    <li><a href ="#"><i class ="fa fa-facebook"></i></a></li>
-                    <li><a href ="#"><i class ="fa fa-twitter"></i></a></li>
-                    <li><a href ="#"><i class ="fa fa-google"></i></a></li>
-                    <li><a href ="#"><i class ="fa fa-youtube"></i></a></li>
-                    <li><a href ="#"><i class ="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </nav>
+        <div class ="topnav">
+            <a href ="#"> Home</a>
+            <a href ="#"> Products</a>
+            <a href ="#"> Ingredients</a>
+        </div>
+        
     </body>
 </html>
+
+  <h2>Search</h2>
+  <style> body {
+      background-color: rgb(204, 182, 142);
+  }
+  .main{
+      max-width:1000px;
+      margin:auto;
+      margin-top:150px;
+  }
+input[type=text] {
+    width:90%;
+    padding:12px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:17px;
+    border:1px solid burlywood;
+    border-right:0;
+    border-radius:5px 0 0 5px;
+    font-style:italic;
+}
+input[type=submit] {
+    position:absolute;
+    padding:12px;
+    width:8%;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:17px;
+    text-shadow:0 0 1px #000;
+    cursor:pointer;
+    text-align:center;
+    color:#fff;
+    border-right:0;
+    background:linear-gradient(#94825a,#94874c);
+    border:1px solid #d4d4cb;
+}
+input[type=submit]:hover{
+    background:linear-gradient(#685a36, #675400);
+}
+input[type=text]:focus, input[type=submit] :focus{
+    outline:none;
+}
+</style>
+  <form action="data/chemicals-in-cosmetics-data.tsv" target="_blank" method="get">
+    <p>
+        <input type ="text" name ="search" placeholder="Type to search">
+                <input type ="submit" value ="Search">
+    </p>
+  </form>
 {% endblock %}
