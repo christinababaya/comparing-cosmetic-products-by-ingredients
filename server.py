@@ -22,7 +22,7 @@ def homepage():
 def allproducts():
     """View all products."""
 
-    products = crud.get_products()
+    products = crud.get_all_products()
 
     return render_template('all_products.html', products=products)
 

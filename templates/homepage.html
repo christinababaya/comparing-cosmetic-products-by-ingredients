@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}Xtina Metics{% endblock %}
+{% block title %}BABAYA Metics{% endblock %}
 
 {% block body %}
 <!DOCTYPE html>
 <html>
-    <h1>XTINA METICS</h1>
+    <h1>BABAYA METICS</h1>
     <head>
         <title> Responsive category bar </title>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
@@ -87,10 +87,13 @@ input[type=text]:focus, input[type=submit] :focus{
     outline:none;
 }
 </style>
-  <form action="data/chemicals-in-cosmetics-data.tsv" target="_blank" method="get">
+  <form action="/products" target="_blank" method="GET"> 
+    <form action="/ingredients" target="_blank" method="GET">
     <p>
         <input type ="text" name ="search" placeholder="Type to search">
                 <input type ="submit" value ="Search">
     </p>
+</form>
   </form>
+
 {% endblock %}

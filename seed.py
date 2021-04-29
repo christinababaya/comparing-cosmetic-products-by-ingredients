@@ -33,6 +33,13 @@ with open('data/chemicals-in-cosmetics-data.tsv') as tsv_f:
         print('*******************************')
         print(product)
         print('*******************************')
+
+        # product = crud.get_product_id(product_id)
+        # if product == None:
+        #     product = crud.create_product(product_id)
+        # print('*******************************')
+        # print(product)
+        # print('*******************************')
         
         ingredient = crud.get_ingredient_by_name(ingredient_name)
         if ingredient == None:
