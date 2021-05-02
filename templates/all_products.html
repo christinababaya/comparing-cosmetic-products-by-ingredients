@@ -7,8 +7,8 @@
   <ul>
     {% for product in products %}
       <li>
-        <a href="/products/">
-          {{ products }}
+        <a href="/products/{{product.product_id}}">
+          {{ product.name }}
         </a>
       </li>
     {% endfor %}

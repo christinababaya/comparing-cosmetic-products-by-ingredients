@@ -7,8 +7,8 @@
   <ul>
     {% for ingredient in ingredients %}
       <li>
-        <a href="/ingredients/{{ ingredients.ingredient_id }}">
-          {{ ingredients }}
+        <a href="/ingredients/{{ ingredient.ingredient_id }}">
+          {{ ingredient.name }}
         </a>
       </li>
     {% endfor %}

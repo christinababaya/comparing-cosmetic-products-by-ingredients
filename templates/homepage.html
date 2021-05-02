@@ -87,13 +87,17 @@ input[type=text]:focus, input[type=submit] :focus{
     outline:none;
 }
 </style>
-  <form action="/products" target="_blank" method="GET"> 
-    <form action="/ingredients" target="_blank" method="GET">
+  <form action="/products" target="_blank" method="GET">
     <p>
-        <input type ="text" name ="search" placeholder="Type to search">
+        <input type ="text" name ="search" placeholder="Type to search product">
+                <input type ="submit" value ="Search">
+    </p>
+  </form>
+  <form action="/ingredients" target="_blank" method="GET">
+    <p>
+        <input type ="text" name ="search" placeholder="Type to search ingredient">
                 <input type ="submit" value ="Search">
     </p>
 </form>
-  </form>
 
 {% endblock %}
