@@ -22,9 +22,11 @@ def get_all_products():
 def get_product_by_ingredient(ingredient):
     """gets the ingrgedients"""
 
-    ingredientId = Ingredient.query.filter_by(ingredient=ingredient).get(ingredient)
-    productId = Product_Ingredient.query.filter_by(ingredientId=ingredient_id)
-    return Product.query.get(productId)
+    igredient_input = Ingredient.query.filter_by(ingredient_name=ingredient)
+    return Product_Ingredient.query.filter_by(ingredient_id = ingredient_input.ingredient_id)
+    # ingredientId = Ingredient.query.filter_by(ingredient=ingredient).get(ingredient_name)
+    # productId = Product_Ingredient.query.filter_by(ingredientId=ingredient_id)
+    # return Product.query.get(productId)
     #return Product_Ingredient.query.filter_by(ingredient=ingredient.ingredient_name).get()
 
 
@@ -54,7 +56,7 @@ def create_ingredient(ingredient_name):
 def get_all_ingredients():
     """Returns all ingredients in database in a list."""
 
-    return Ingredients.query.all()
+    return Ingredient.query.all()
 
 
 def get_ingredient_by_name(ingredient_name):

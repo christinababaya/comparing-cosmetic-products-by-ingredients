@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}BABAYA Metics{% endblock %}
+{% block title %}All Products by Ingredients{% endblock %}
 
 {% block body %}
+  <h1>Product By Ingredient</h1>
 
-
+  <ul>
+    {% for ingredient in ingredients %}
+      <li>
+        <a href="/ingredients/{{ ingredient.ingredient_id }}">
+          {{ ingredient.ingredient_id }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}

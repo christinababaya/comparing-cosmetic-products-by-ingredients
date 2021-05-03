@@ -35,12 +35,21 @@ def show_product(product_name):
 
     return render_template('product_details.html', product=product)
 
+@app.route('/prodingredients')
+def all_product_ingredients():
+    """Show products with same ingredients."""
+
+    products = crud.get_product_by_ingredient("Estragole")
+
+    return render_template('results_page.html', ingredients=products)
+
 
 @app.route('/ingredients')
 def all_ingedients():
     """View all ingredients."""
 
-    ingredients = crud.get_product_by_ingredient("retinol")
+    # ingredients = crud.get_product_by_ingredient("retinol")
+    ingredients = crud.get_all_ingredients()
 
     return render_template('all_product_ingredients.html', ingredients=ingredients)
 
