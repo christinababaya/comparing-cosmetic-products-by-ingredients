@@ -27,11 +27,11 @@ def allproducts():
     return render_template('all_products.html', products=products)
 
 
-@app.route('/products/<product_id>')
-def show_product(product_id):
+@app.route('/products/<product_name>')
+def show_product(product_name):
     """Show details on a particular product."""
 
-    product = crud.get_product_by_id(product_id)
+    product = crud.get_product_by_name(product_name)
 
     return render_template('product_details.html', product=product)
 
@@ -40,7 +40,7 @@ def show_product(product_id):
 def all_ingedients():
     """View all ingredients."""
 
-    ingredients = crud.get_ingredients()
+    ingredients = crud.get_product_by_ingredient("retinol")
 
     return render_template('all_product_ingredients.html', ingredients=ingredients)
 

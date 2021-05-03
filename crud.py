@@ -19,6 +19,14 @@ def get_all_products():
 
     return Product.query.all()
 
+def get_product_by_ingredient(ingredient):
+    """gets the ingrgedients"""
+
+    ingredientId = Ingredient.query.filter_by(ingredient=ingredient).get(ingredient)
+    productId = Product_Ingredient.query.filter_by(ingredientId=ingredient_id)
+    return Product.query.get(productId)
+    #return Product_Ingredient.query.filter_by(ingredient=ingredient.ingredient_name).get()
+
 
 def get_product_by_name(name):
     """Queries db for product by name and retrieves the first entry
