@@ -39,11 +39,10 @@
     </head>
     <body>
         <div class ="topnav">
-            <a href ="#"> Home</a>
-            <a href ="#"> Products</a>
-            <a href ="#"> Ingredients</a>
+            <a href ="/"> Home</a>
+            <a href ="/products"> Products</a>
+            <a href ="/ingredients"> Ingredients</a>
         </div>
-        
     </body>
 </html>
 
@@ -87,16 +86,15 @@ input[type=text]:focus, input[type=submit] :focus{
     outline:none;
 }
 </style>
-  <form action="/products" target="_blank" method="GET">
+  <form action="/products/search" method="GET">
     <p>
-        <!-- name ="product_name" -->
-        <input type ="text"  name = "product_name" placeholder="Type to search product">
+        <input type="text"  name="product_name" placeholder="Type to search product">
                 <input type ="submit" value ="Search">
     </p>
   </form>
-  <form action="/ingredients" target="_blank" method="GET">
+  <form action="/ingredients/search" method="GET">
     <p>
-        <input type ="text" placeholder="Type to search ingredient">
+        <input type ="text" name="ingredient_name" placeholder="Type to search ingredient">
                 <input type ="submit" value ="Search">
     </p>
 </form>

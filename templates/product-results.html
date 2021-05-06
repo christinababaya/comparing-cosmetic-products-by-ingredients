@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Product Search - {{ search_term }}
+{% endblock %}
+
+{% block body %}
+  <h1>Product Search - {{ search_term }}</h1>
+
+  {% if not products %}
+    Sorry, no products match your search.<br>
+    <a href="/">Search again.</a>
+{% endif %}
+
+  <ul>
+    {% for product in products %}
+      <li>
+        <a href="/products/{{ product.product_id }}">
+          {{ product.brand }} - {{ product.name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

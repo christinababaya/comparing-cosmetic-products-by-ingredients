@@ -1,13 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ products }} - Details{% endblock %}
+{% block title %}
+  {{ product.name }} - Details
+{% endblock %}
 
 {% block body %}
-<h1>{{ products }}</h1>
+  <h1>{{ product.name }}</h1>
 
-<p>
-  {{ products }}
-</p>
+  <p>
+    Brand: {{ product.brand }}<br>
+    Categories: {{ product.product_categorization }}<br>
+  </p>
 
-<img src="{{ product.poster_path }}">
+  <h2>Ingredients</h2>
+  <ul>
+    {% for prod_ing in product_ingredients %}
+      <li>
+        <a href="/ingredients/{{ prod_ing.ingredient.ingredient_id }}">{{ prod_ing.ingredient.ingredient_name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
 {% endblock %}

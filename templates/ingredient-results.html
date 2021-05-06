@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Ingredient Search - {{ search_term }}
+{% endblock %}
+
+{% block body %}
+  <h1>Ingredient Search - {{ search_term }}</h1>
+
+    {% if not ingredients %}
+        Sorry, no ingredients match your search.<br>
+        <a href="/">Search again.</a>
+    {% endif %}
+
+  <ul>
+    {% for ing in ingredients %}
+      <li>
+        <a href="/ingredients/{{ ing.ingredient_id }}">
+            {{ ing.ingredient_name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

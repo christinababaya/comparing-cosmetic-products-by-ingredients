@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ ingredient }} - Details{% endblock %}
+{% block title %}
+  {{ ingredient.ingredient_name }} - Details
+{% endblock %}
 
 {% block body %}
-<h1>{{ ingredient }}</h1>
+  <h1>{{ ingredient.ingredient_name }}</h1>
 
-<p>
-  {{ ingredient }}
-</p>
+  <h2>Products containing ingredient:</h2>
+  <ul>
+    {% for ing_prod in ingredient_products %}
+      <li>
+        <p>
+          <a href="/products/{{ ing_prod.product.product_id }}">{{ ing_prod.product.name }}</a><br>
+          Brand: {{ ing_prod.product.brand }}<br>
+          Category: {{ ing_prod.product.product_categorization }}<br>
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
 
-<img src="{{ ingredient.poster_path }}">
 {% endblock %}
