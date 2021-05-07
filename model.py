@@ -59,23 +59,6 @@ class Product_Ingredient(db.Model):
         return f'<Product_Ingredient product_ingredient_id={self.product_ingredient_id} product_id={self.product_id} ingredient_id={self.ingredient_id}>'
 
 
-class Review(db.Model):
-    """Customer Reviews"""
-
-    ___tablename___ = 'reviews'
-
-    review_id = db.Column(db.Integer,
-                            autoincrement=True,
-                            primary_key=True,
-                            nullable=True)
-    product_id = db.Column(db.Integer, db.ForeignKey('products.product_id'))
-
-    product = db.relationship('Product', backref='reviews')
-
-    def __repr__(self):
-        return f'<Review review_id={self.review_id} product_id={self.product_id}>'
-
-
 def connect_to_db(flask_app, db_uri='postgresql:///cosmetics', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo

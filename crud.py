@@ -1,6 +1,6 @@
 """CRUD opperations"""
 
-from model import db, Product, Ingredient, Product_Ingredient, Review, connect_to_db
+from model import db, Product, Ingredient, Product_Ingredient, connect_to_db
 from sqlalchemy import or_
 
 def create_product(name, brand, product_categorization, image=''):
@@ -115,33 +115,6 @@ def get_ingredients_for_product(product):
     """ Queries db for all prod_ing rows matching the product. """
     
     return Product_Ingredient.query.filter_by(product_id=product.product_id).all()
-
-
-def create_review(product):
-    """"Create, add to db, and return a review."""
-
-    review = Review(uproduct=product)
-    
-    db.session.add(review)
-    db.session.commit()
-
-    return review
-
-
-def get_review():
-    """Returns all reviews in database"""
-
-    return Review.query.all()
-
-
-def get_reviews_for_product(product):
-    """Return all reviews for one product in a list."""
-    
-    product_reviews = Review.query.filter_by(product=product).all()
-    
-    return product_reviews
-
-
 
 if __name__ == '__main__':
     from server import app

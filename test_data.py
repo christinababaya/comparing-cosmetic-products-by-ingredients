@@ -1,29 +1,45 @@
 """test data for database"""
- 
+from unittest import TestCase
+from server import app
+from model import connect_to_db, db
+from flask import session
 
 
-from model import db, Product, Ingredients, Product_ingredients, Review, connect_to_db
+
+from model import db, Product, Ingredients, Product_ingredients, Suggestions, connect_to_db
 
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 
 
 
-def example_data():
-    """Sample data to help with testing"""
+class FlaskTests(TestCase):
+    """Tests for the Flask server"""
 
-    User.query.delete()
- 
-   
+    def setUp(self):
+        """Setup code to run before every test."""
 
-    db.session.add_all([ ])
-    db.session.commit()
+        
+        self.client = app.test_client()
+        # Show Flask errors that happen during tests
+        app.config['TESTING'] = True
+        
+        connect_to_db(server.app)
+        db.create_all()
+        test_seed.create_test_data()
+
+
+    def test_homepage(self):
+        """Test homepage to see if it can be reached"""
+
+        result = self.client.get("/")
+        self.assertIn(b"Welcome!", result.data)
 
 
 
 
 
-if __name__ == '__main__':
-    from server import app
+if __name__ == "__main__":
+    import unittest
 
-    connect_to_db(app)
+    unittest.main()
